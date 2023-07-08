@@ -1,29 +1,25 @@
-import React from "react";
-import styled from 'styled-components';
-import Mainbar from "./components/screens/Mainbar";
-import { Route, BrowserRouter as Router,Routes} from "react-router-dom";
-import './App.css';
-import Placeall from "./components/screens/Placeall";
-import Viewplace from "./components/screens/Viewplace";
-function App() {
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Places from "./components/screens/Places";
+import Place from "./components/screens/Place";
+import NotFound from "./components/screens/NotFound";
+import Login from "./components/screens/Login";
+import Signup from "./components/screens/Signup";
+
+function App(props) {
   return (
     <div>
-      <Wrapper>
-        <Router>
-          <Mainbar />
-          <Routes>
-            <Route path="/" element={<Placeall />} />
-            <Route path="/:id" element={<Viewplace />} />
-          </Routes>
-        </Router>
-      </Wrapper>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Places />} />
+          <Route path="/auth/login/" element={<Login />} />
+          <Route path="/auth/create/" element={<Signup />} />
+          <Route path="/place/:id" element={<Place />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
 
 export default App;
- const Wrapper= styled.div`
-  width:90%;
-  margin:0 auto;
-  padding-top:20px;
- `;
