@@ -8,7 +8,7 @@ import Helmet from "react-helmet";
 
 export default function Places() {
     const [places, setPlaces] = useState([]);
-
+    
     useEffect(() => {
         axios
             .get(`${BASE_URL}/places`)
@@ -21,7 +21,12 @@ export default function Places() {
     }, []);
 
     const renderPlaces = () => {
-        return places.map((place) => (
+
+        
+
+        return places.map((place) => 
+        
+        (
             <PlaceCard>
                 <PlaceCardLink to={`/place/${place.id}/`}>
                     <PlaceImage src={place.image} alt="Image" />
@@ -36,6 +41,7 @@ export default function Places() {
                                 alt="Place"
                             />
                             <LocationName>{place.location}</LocationName>
+                            
                         </Location>
                     </PlaceBottomContainer>
                 </PlaceCardLink>
